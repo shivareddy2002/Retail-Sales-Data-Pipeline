@@ -1,0 +1,31 @@
+order_id,order_date,customer_id,customer_name,product,category,region,sales,quantity,profit
+ORD-001,2024-01-05,CUST-101,Alice Johnson,Wireless Mouse,Electronics,North,45.99,2,12.50
+ORD-002,2024-01-08,CUST-102,Bob Smith,Office Chair,Furniture,South,299.99,1,85.00
+ORD-003,2024-01-12,CUST-103,Carol White,Notebook Pack,Stationery,East,18.75,5,6.20
+ORD-004,2024-01-15,CUST-104,David Lee,USB-C Hub,Electronics,West,59.99,3,18.00
+ORD-005,2024-01-18,CUST-105,Emma Davis,Standing Desk,Furniture,North,549.99,1,130.00
+ORD-006,2024-01-22,CUST-101,Alice Johnson,Mechanical Keyboard,Electronics,North,119.99,1,35.00
+ORD-007,2024-01-25,CUST-106,Frank Miller,Sticky Notes,Stationery,South,12.49,10,4.50
+ORD-008,2024-02-02,CUST-107,Grace Wilson,Monitor Stand,Furniture,East,79.99,2,22.00
+ORD-009,2024-02-05,CUST-108,Henry Brown,Laptop Sleeve,Accessories,West,34.99,4,10.50
+ORD-010,2024-02-09,CUST-102,Bob Smith,Ergonomic Mouse,Electronics,South,89.99,1,28.00
+ORD-011,2024-02-14,CUST-109,Isabel Garcia,Desk Lamp,Furniture,North,49.99,2,15.00
+ORD-012,2024-02-18,CUST-110,James Martinez,Printer Paper,Stationery,East,24.99,6,8.00
+ORD-013,2024-02-22,CUST-103,Carol White,Webcam HD,Electronics,East,99.99,1,30.00
+ORD-014,2024-03-01,CUST-111,Karen Taylor,Bookshelf,Furniture,West,189.99,1,52.00
+ORD-015,2024-03-05,CUST-112,Liam Anderson,Noise Cancelling Headphones,Electronics,North,249.99,1,75.00
+ORD-016,2024-03-10,CUST-104,David Lee,Cable Management Kit,Accessories,West,22.99,3,7.50
+ORD-017,2024-03-15,CUST-113,Mia Thomas,Whiteboards,Stationery,South,64.99,2,20.00
+ORD-018,2024-03-20,CUST-114,Noah Jackson,Gaming Chair,Furniture,East,399.99,1,110.00
+ORD-019,2024-03-25,CUST-105,Emma Davis,Smart Speaker,Electronics,North,129.99,2,40.00
+ORD-020,2024-03-28,CUST-115,Olivia Harris,Pen Set,Stationery,West,15.99,8,5.00
+ORD-021,2024-04-03,CUST-116,Peter Clark,External SSD,Electronics,South,139.99,2,42.00
+ORD-022,2024-04-08,CUST-107,Grace Wilson,Desk Organizer,Accessories,East,29.99,3,9.00
+ORD-023,2024-04-12,CUST-117,Quinn Lewis,Filing Cabinet,Furniture,North,229.99,1,65.00
+ORD-024,2024-04-18,CUST-118,Rachel Robinson,Tablet Stand,Accessories,West,39.99,2,12.00
+ORD-025,2024-04-22,CUST-108,Henry Brown,Bluetooth Speaker,Electronics,West,79.99,1,24.00
+ORD-026,2024-04-27,CUST-119,Samuel Walker,Highlighters Pack,Stationery,South,9.99,12,3.50
+ORD-027,2024-05-03,CUST-120,Tina Hall,Laptop Cooling Pad,Accessories,East,44.99,2,14.00
+ORD-028,2024-05-08,CUST-109,Isabel Garcia,Conference Webcam,Electronics,North,199.99,1,58.00
+ORD-029,2024-05-14,CUST-110,James Martinez,Ergonomic Keyboard,Electronics,South,149.99,1,45.00
+ORD-030,2024-05-20,CUST-111,Karen Taylor,Monitor 27 inch,Electronics,West,349.99,1,95.00
