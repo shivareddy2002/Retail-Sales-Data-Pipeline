@@ -1,80 +1,72 @@
-# 🛒 Retail Sales Data Pipeline
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8e2de2,100:4a00e0&height=180&section=header&text=🛒%20Retail%20Sales%20Data%20Pipeline&fontSize=34&fontColor=ffffff&animation=fadeIn&fontAlignY=35"/>
+</p>
 
 ### *End-to-End Data Engineering Project: Incremental Loading, CDC, Star Schema & Power BI*
 
 ![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+
+---
+
+## 🔥 Project Snapshot
+
+This project demonstrates a **production-grade retail data pipeline** built using **Snowflake + SQL + Power BI**.
+
+It simulates how modern data teams handle:
+- Continuous data ingestion  
+- Change Data Capture (CDC)  
+- Incremental processing  
+- Data modeling (Star Schema)  
+- Business reporting  
+
+> ⚡ **From raw CSV → Automated pipeline → BI Dashboard**
+
 ---
 
 ## 📌 Project Overview
 
-This project demonstrates a **production-grade retail sales data pipeline** built entirely on **Snowflake**. It covers the full lifecycle of data — from raw CSV ingestion through automated transformation, Change Data Capture (CDC), Star Schema modeling, and final Power BI dashboards.
+This project covers the **complete data lifecycle**:
 
-**Business Use Case:**
-A retail company receives daily order files from its point-of-sale system. The business needs:
-- A reliable pipeline to ingest and clean raw sales data
-- Incremental loading that only processes *new and changed* records
-- A dimensional model (Star Schema) that BI tools can query efficiently
-- Automated Power BI dashboards showing revenue, profit, and customer trends
+1. Raw data ingestion from CSV  
+2. Data cleaning & transformation (ETL)  
+3. Change Data Capture using Streams  
+4. Incremental loading using MERGE  
+5. Automated pipelines using Tasks  
+6. Star Schema modeling  
+7. Power BI dashboard integration  
 
 ---
 
-## 🏗️ Architecture
+## 🧠 Business Use Case
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     RETAIL SALES DATA PIPELINE                       │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                       │
-│  📁 CSV File                                                          │
-│      │                                                               │
-│      ▼                                                               │
-│  [Internal Stage] ──COPY INTO──▶ [RAW_SALES]                         │
-│      (Snowflake Stage)              (Raw Layer)                       │
-│                                         │                             │
-│                                         │ Stream (CDC)                │
-│                                         ▼                             │
-│                                   [SALES_CDC_STREAM]                  │
-│                                         │                             │
-│                                         │ MERGE (every 5 min)         │
-│                                         ▼                             │
-│                                   [STG_SALES]                         │
-│                                  (Staging Layer)                      │
-│                                         │                             │
-│                              ┌──────────┼──────────┐                  │
-│                              ▼          ▼          ▼                  │
-│                        DIM_CUSTOMER  DIM_PRODUCT  DIM_REGION          │
-│                              │          │          │                  │
-│                              └──────────┼──────────┘                  │
-│                                         │                             │
-│                                    [FACT_SALES]                       │
-│                                   (MART Layer)                        │
-│                                         │                             │
-│                                         ▼                             │
-│                                  [Power BI Dashboard]                 │
-│                                                                       │
-│  ⚙️  Snowflake Tasks automate the entire pipeline (every 5 min)       │
-│  🔍  DQ Checks log results to AUDIT.DQ_CHECK_LOG                      │
-│  ⏱️  Time Travel enables point-in-time recovery                        │
-└─────────────────────────────────────────────────────────────────────┘
-```
+A retail company receives daily sales data from POS systems.
+
+They need:
+- Reliable ingestion of raw data  
+- Efficient processing of only changed data  
+- Optimized schema for reporting  
+- Automated dashboards for decision-making  
 
 ---
 
 ## 🛠️ Tech Stack
 
 | Tool | Purpose |
-|------|---------|
-| **Snowflake** | Cloud Data Warehouse — storage, compute, streams, tasks |
-| **SQL** | All ETL logic, transformations, MERGE statements |
-| **Snowflake Streams** | Change Data Capture (CDC) |
-| **Snowflake Tasks** | Pipeline automation & scheduling |
-| **Power BI Desktop** | Business Intelligence dashboards |
-| **CSV** | Source data format |
+|------|--------|
+| **Snowflake** | Cloud Data Warehouse |
+| **SQL** | Data transformation & querying |
+| **Snowflake Streams** | Change Data Capture |
+| **Snowflake Tasks** | Automation & scheduling |
+| **Power BI Desktop** | Data visualization |
+| **CSV** | Source data |
 | **Git / GitHub** | Version control |
 
 ---
+
+## 📂 Project Structure
+
 
 ## 📂 Project Structure
 
@@ -251,20 +243,6 @@ MERGE INTO staging USING stream_data
 
 ---
 
-## 📸 Screenshots
-
-> Add screenshots of your Snowflake worksheets and Power BI dashboard here.
-
-```
-images/
-├── snowflake_raw_table.png
-├── snowflake_star_schema.png
-├── powerbi_dashboard_page1.png
-├── powerbi_dashboard_page2.png
-└── powerbi_dashboard_page3.png
-```
-
----
 
 ## 🤝 Contributing
 
@@ -272,18 +250,79 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ---
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## 👤 Author
-
-Built as a portfolio project for Data Engineering roles.
 
 **Skills demonstrated:** Snowflake · SQL · ETL · CDC · Star Schema · Dimensional Modeling · Power BI · Pipeline Automation
 
----
+## 🖼️ Visual Workflow
 
-*⭐ Star this repo if it helped you learn or land a job!*
+flowchart LR
+
+%% ===================== DATA INGESTION =====================
+subgraph ING[📥 Data Ingestion]
+    A["📁 CSV File"]
+    B["📦 Snowflake Stage"]
+    C["📄 RAW_SALES Table"]
+end
+
+%% ===================== CDC =====================
+subgraph CDC[📡 Change Data Capture]
+    D["🔄 SALES_CDC_STREAM"]
+end
+
+%% ===================== TRANSFORMATION =====================
+subgraph TR[⚙️ Transformation Layer]
+    E["🧹 STG_SALES (Cleaned Data)"]
+    F["🔁 MERGE (Incremental Load)"]
+end
+
+%% ===================== DATA MODELING =====================
+subgraph DM[⭐ Star Schema]
+    G["👤 DIM_CUSTOMER"]
+    H["📦 DIM_PRODUCT"]
+    I["🌍 DIM_REGION"]
+    J["📅 DIM_DATE"]
+    K["📊 FACT_SALES"]
+end
+
+%% ===================== ANALYTICS =====================
+subgraph BI[📊 Analytics & Reporting]
+    L["📈 Power BI Dashboard"]
+end
+
+%% ===================== FLOW =====================
+A --> B --> C --> D --> F --> E
+E --> G
+E --> H
+E --> I
+E --> J
+G --> K
+H --> K
+I --> K
+J --> K
+K --> L
+
+%% ===================== STYLING =====================
+style A fill:#FFD54F,stroke:#F57F17,color:#000
+style B fill:#4FC3F7,stroke:#0277BD,color:#fff
+style C fill:#4FC3F7,stroke:#01579B,color:#fff
+style D fill:#BA68C8,stroke:#4A148C,color:#fff
+style E fill:#AED581,stroke:#33691E,color:#000
+style F fill:#FF8A65,stroke:#BF360C,color:#fff
+style K fill:#90CAF9,stroke:#0D47A1,color:#000
+style L fill:#F44336,stroke:#B71C1C,color:#fff
+
+## 👨‍💻 Author  
+
+**Lomada Siva Gangi Reddy**  
+- 🎓 B.Tech CSE (Data Science), RGMCET (2021–2025)  
+- 💡 Interests: Python | Machine Learning | Deep Learning | Data Science  
+- 📍 Open to **Internships & Job Offers**
+
+ **Contact Me**:  
+
+- 📧 **Email**: lomadasivagangireddy3@gmail.com  
+- 📞 **Phone**: 9346493592  
+- 💼 [LinkedIn](https://www.linkedin.com/in/lomada-siva-gangi-reddy-a64197280/)  🌐 [GitHub](https://github.com/shivareddy2002)  🚀 [Portfolio](https://lsgr-portfolio-pulse.lovable.app/)
+
+---
+<p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8e2de2,100:4a00e0&height=120&section=footer"/> </p>
