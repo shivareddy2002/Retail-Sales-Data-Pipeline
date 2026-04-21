@@ -118,70 +118,6 @@ retail-data-pipeline/
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Snowflake account (free trial: [signup here](https://signup.snowflake.com/))
-- Power BI Desktop (free: [download here](https://powerbi.microsoft.com/desktop/))
-- Basic SQL knowledge
-
-### Step-by-Step Setup
-
-**Step 1: Clone this repository**
-```bash
-git clone https://github.com/yourusername/retail-data-pipeline.git
-cd retail-data-pipeline
-```
-
-**Step 2: Run environment setup**
-```sql
--- In Snowflake UI (Worksheets) or SnowSQL
--- Execute: sql/01_setup/01_snowflake_environment_setup.sql
-```
-
-**Step 3: Create raw table and upload CSV**
-```sql
--- Execute: sql/02_raw_layer/01_raw_table_and_stage.sql
--- Then upload data/retail_sales_raw.csv to the stage:
-PUT file:///path/to/retail_sales_raw.csv @RETAIL_DB.RAW.RETAIL_STAGE;
-```
-
-**Step 4: Run the initial transformation**
-```sql
--- Execute: sql/03_transformation/01_transform_sales.sql
-```
-
-**Step 5: Set up CDC Stream**
-```sql
--- Execute: sql/04_cdc_streams/01_cdc_stream_setup.sql
-```
-
-**Step 6: Run the initial MERGE**
-```sql
--- Execute: sql/05_merge_incremental/01_incremental_merge.sql
-```
-
-**Step 7: Activate automated Tasks**
-```sql
--- Execute: sql/06_tasks/01_pipeline_tasks.sql
-```
-
-**Step 8: Build the Star Schema**
-```sql
--- Execute: sql/07_star_schema/01_star_schema_design.sql
-```
-
-**Step 9: Validate with analytical queries**
-```sql
--- Execute: sql/08_analytical_queries/01_business_analytics.sql
-```
-
-**Step 10: Connect Power BI**
-```
-Follow: powerbi/POWERBI_INTEGRATION.md
-```
-
----
 
 ## ✨ Key Features
 
@@ -243,15 +179,9 @@ MERGE INTO staging USING stream_data
 
 ---
 
-
-## 🤝 Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-
 **Skills demonstrated:** Snowflake · SQL · ETL · CDC · Star Schema · Dimensional Modeling · Power BI · Pipeline Automation
+
+--- 
 
 ## 🖼️ Visual Workflow
 
