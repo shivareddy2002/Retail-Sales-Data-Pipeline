@@ -98,6 +98,7 @@ style K fill:#90CAF9,stroke:#0D47A1,color:#000
 style L fill:#F44336,stroke:#B71C1C,color:#fff
 
 ```
+---
 
 ## 🛠️ Tech Stack
 
@@ -159,9 +160,7 @@ retail-data-pipeline/
 │
 └── README.md                                    # This file
 ```
-
 ---
-
 
 ## ✨ Key Features
 
@@ -284,6 +283,14 @@ style F fill:#FF8A65,stroke:#BF360C,color:#fff
 style K fill:#90CAF9,stroke:#0D47A1,color:#000
 style L fill:#F44336,stroke:#B71C1C,color:#fff
 ```
+---
+## 🔭 Future Scope
+
+- Implement **Snowpipe** for real-time, event-driven ingestion from AWS S3 / Azure Blob Storage  
+- Integrate **dbt (Data Build Tool)** for modular, reusable, and tested data models  
+- Use **Apache Airflow** for scalable, cross-platform pipeline orchestration
+- 
+---
 
 ## 👨‍💻 Author  
 
