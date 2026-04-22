@@ -195,21 +195,30 @@ The project uses a realistic retail sales dataset with 30 orders across 5 months
 
 ---
 
-## 🔑 Core Concepts Demonstrated
+## 🔑 Core Concepts
 
-### 1. Change Data Capture (CDC)
-Snowflake Streams track row-level changes. When a new file is loaded:
-- New orders → INSERT action in stream → inserted into staging
-- Updated orders → DELETE + INSERT pair → staging row updated
-- Deleted orders → DELETE action → removed from staging
+### 📡 1. Change Data Capture (CDC)
+- Snowflake Streams track row-level changes automatically
+- Captures:
+  - INSERT → new records
+  - UPDATE → DELETE + INSERT pair
+  - DELETE → removed records
+- Enables efficient incremental processing
 
-### 2. MERGE Statement
-The MERGE upsert handles all three CDC scenarios in a single atomic operation:
+---
+
+### 🔄 2. Incremental Loading (MERGE)
+- Avoids full table reloads
+- Processes only changed data
+
 ```sql
-MERGE INTO staging USING stream_data
-  WHEN MATCHED AND action = 'INSERT' → UPDATE
-  WHEN MATCHED AND action = 'DELETE' → DELETE
-  WHEN NOT MATCHED AND action = 'INSERT' → INSERT
+MERGE INTO stg_sales t
+USING sales_cdc_stream s
+ON t.order_id = s.order_id
+
+WHEN MATCHED AND s.metadata$action = 'INSERT' THEN UPDATE
+WHEN MATCHED AND s.metadata$action = 'DELETE' THEN DELETE
+WHEN NOT MATCHED AND s.metadata$action = 'INSERT' THEN INSERT
 ```
 
 ### 3. Star Schema
@@ -218,72 +227,34 @@ MERGE INTO staging USING stream_data
 - **DIM_PRODUCT** — product name + category
 - **DIM_REGION** — region lookup table
 - **DIM_DATE** — calendar table with year/month/quarter attributes
-
+### 💡 Why Star Schema?
+- Faster query performance
+- Simplified joins
+- Optimized for BI tools like Power BI
 ---
 
 **Skills demonstrated:** Snowflake · SQL · ETL · CDC · Star Schema · Dimensional Modeling · Power BI · Pipeline Automation
 
+```markdown
+## 🚀 Getting Started
+
+### Prerequisites
+- Snowflake Account
+- Power BI Desktop
+- SnowSQL / Web UI
+
+### Steps
+
+1. Clone the repository  
+```bash
+git clone https://github.com/shivareddy2002/retail-data-pipeline.git
+2. Run SQL scripts in order (01 → 09)
+3. Upload dataset to Snowflake Stage
+4. Execute pipeline tasks
+5. Connect Power BI to Snowflake
+
 --- 
 
-## 🖼️ Visual Workflow
-```mermaid
-flowchart LR
-
-%% ===================== DATA INGESTION =====================
-subgraph ING[📥 Data Ingestion]
-    A["📁 CSV File"]
-    B["📦 Snowflake Stage"]
-    C["📄 RAW_SALES Table"]
-end
-
-%% ===================== CDC =====================
-subgraph CDC[📡 Change Data Capture]
-    D["🔄 SALES_CDC_STREAM"]
-end
-
-%% ===================== TRANSFORMATION =====================
-subgraph TR[⚙️ Transformation Layer]
-    E["🧹 STG_SALES (Cleaned Data)"]
-    F["🔁 MERGE (Incremental Load)"]
-end
-
-%% ===================== DATA MODELING =====================
-subgraph DM[⭐ Star Schema]
-    G["👤 DIM_CUSTOMER"]
-    H["📦 DIM_PRODUCT"]
-    I["🌍 DIM_REGION"]
-    J["📅 DIM_DATE"]
-    K["📊 FACT_SALES"]
-end
-
-%% ===================== ANALYTICS =====================
-subgraph BI[📊 Analytics & Reporting]
-    L["📈 Power BI Dashboard"]
-end
-
-%% ===================== FLOW =====================
-A --> B --> C --> D --> F --> E
-E --> G
-E --> H
-E --> I
-E --> J
-G --> K
-H --> K
-I --> K
-J --> K
-K --> L
-
-%% ===================== STYLING =====================
-style A fill:#FFD54F,stroke:#F57F17,color:#000
-style B fill:#4FC3F7,stroke:#0277BD,color:#fff
-style C fill:#4FC3F7,stroke:#01579B,color:#fff
-style D fill:#BA68C8,stroke:#4A148C,color:#fff
-style E fill:#AED581,stroke:#33691E,color:#000
-style F fill:#FF8A65,stroke:#BF360C,color:#fff
-style K fill:#90CAF9,stroke:#0D47A1,color:#000
-style L fill:#F44336,stroke:#B71C1C,color:#fff
-```
----
 ## 🔭 Future Scope
 
 - Implement **Snowpipe** for real-time, event-driven ingestion from AWS S3 / Azure Blob Storage  
