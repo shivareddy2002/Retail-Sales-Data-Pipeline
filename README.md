@@ -258,7 +258,6 @@ WHEN NOT MATCHED AND s.metadata$action = 'INSERT' THEN INSERT
 1. Clone the repository  
 ```bash
 git clone https://github.com/shivareddy2002/retail-data-pipeline.git
-```
 2. Run SQL scripts in order (01 → 09)
 3. Upload dataset to Snowflake Stage
 4. Execute pipeline tasks
