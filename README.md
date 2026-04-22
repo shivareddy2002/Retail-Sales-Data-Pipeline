@@ -235,7 +235,6 @@ WHEN NOT MATCHED AND s.metadata$action = 'INSERT' THEN INSERT
 
 **Skills demonstrated:** Snowflake · SQL · ETL · CDC · Star Schema · Dimensional Modeling · Power BI · Pipeline Automation
 
-```markdown
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -244,23 +243,24 @@ WHEN NOT MATCHED AND s.metadata$action = 'INSERT' THEN INSERT
 - SnowSQL / Web UI
 
 ### Steps
-
+```markdown
 1. Clone the repository  
 ```bash
 git clone https://github.com/shivareddy2002/retail-data-pipeline.git
+```
 2. Run SQL scripts in order (01 → 09)
 3. Upload dataset to Snowflake Stage
 4. Execute pipeline tasks
 5. Connect Power BI to Snowflake
-
+```
 --- 
 
 ## 🔭 Future Scope
 
 - Implement **Snowpipe** for real-time, event-driven ingestion from AWS S3 / Azure Blob Storage  
-- Integrate **dbt (Data Build Tool)** for modular, reusable, and tested data models  
-- Use **Apache Airflow** for scalable, cross-platform pipeline orchestration
-- 
+- Integrate **dbt (Data Build Tool)** for modular and testable data models  
+- Use **Apache Airflow** for scalable pipeline orchestration
+
 ---
 
 ## 👨‍💻 Author  
