@@ -67,15 +67,12 @@ They need:
 
 ## 📂 Project Structure
 
-
-## 📂 Project Structure
-
 ```
 retail-data-pipeline/
 │
 ├── 📁 data/
 │   └── retail_sales_raw.csv          # Sample dataset (30 orders)
-│
+│   └── retail_sales_Dataset.csv      # Kaggle dataset
 ├── 📁 sql/
 │   ├── 01_setup/
 │   │   └── 01_snowflake_environment_setup.sql   # DB, schema, warehouse, roles
@@ -108,10 +105,10 @@ retail-data-pipeline/
 │   └── POWERBI_INTEGRATION.md                   # Step-by-step Power BI guide
 │
 ├── 📁 images/
-│   └── (add screenshots here)
+│   └──screenshot 1
 │
 ├── 📁 docs/
-│   └── (additional documentation)
+│   └── Project Documentation
 │
 └── README.md                                    # This file
 ```
