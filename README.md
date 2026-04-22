@@ -4,52 +4,98 @@
 
 ### *End-to-End Data Engineering Project: Incremental Loading, CDC, Star Schema & Power BI*
 
-![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+<p align="center">
+  <img src="https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white" alt="Snowflake" />
+  <img src="https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="SQL" />
+  <img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI" />
+</p>
 
 ---
 
 ## 🔥 Project Snapshot
 
-This project demonstrates a **production-grade retail data pipeline** built using **Snowflake + SQL + Power BI**.
+This project demonstrates a **production-grade retail data pipeline** built entirely with modern data stack principles using **Snowflake, SQL, and Power BI**. 
 
-It simulates how modern data teams handle:
-- Continuous data ingestion  
-- Change Data Capture (CDC)  
-- Incremental processing  
-- Data modeling (Star Schema)  
-- Business reporting  
+It simulates how modern data engineering teams handle:
+- Continuous data ingestion from flat files  
+- Change Data Capture (CDC) to track row-level modifications  
+- Incremental processing (Upserts) for cost optimization  
+- Dimensional Data Modeling (Star Schema) for analytics  
+- Business Intelligence reporting  
 
-> ⚡ **From raw CSV → Automated pipeline → BI Dashboard**
-
----
-
-## 📌 Project Overview
-
-This project covers the **complete data lifecycle**:
-
-1. Raw data ingestion from CSV  
-2. Data cleaning & transformation (ETL)  
-3. Change Data Capture using Streams  
-4. Incremental loading using MERGE  
-5. Automated pipelines using Tasks  
-6. Star Schema modeling  
-7. Power BI dashboard integration  
+> ⚡ **From raw CSV → Automated Pipeline → BI Dashboard**
 
 ---
 
 ## 🧠 Business Use Case
 
-A retail company receives daily sales data from POS systems.
-
-They need:
-- Reliable ingestion of raw data  
-- Efficient processing of only changed data  
-- Optimized schema for reporting  
-- Automated dashboards for decision-making  
+A retail enterprise receives daily sales data from multiple POS (Point of Sale) systems. 
+To make agile decisions, the business requires:
+- Reliable ingestion of raw, untyped data.
+- Efficient processing of *only* changed data (avoiding expensive full-table reloads).
+- An optimized, read-heavy schema for reporting.
+- Automated dashboards for tracking KPIs like total revenue, regional performance, and product profitability.
 
 ---
+
+## 🖼️ Architecture & Visual Workflow
+
+```mermaid
+flowchart LR
+
+%% ===================== DATA INGESTION =====================
+subgraph ING[📥 Data Ingestion]
+    A["📁 CSV File"]
+    B["📦 Snowflake Stage"]
+    C["📄 RAW_SALES Table"]
+end
+
+%% ===================== CDC =====================
+subgraph CDC[📡 Change Data Capture]
+    D["🔄 SALES_CDC_STREAM"]
+end
+
+%% ===================== TRANSFORMATION =====================
+subgraph TR[⚙️ Transformation Layer]
+    E["🧹 STG_SALES (Cleaned Data)"]
+    F["🔁 MERGE (Incremental Load)"]
+end
+
+%% ===================== DATA MODELING =====================
+subgraph DM[⭐ Star Schema]
+    G["👤 DIM_CUSTOMER"]
+    H["📦 DIM_PRODUCT"]
+    I["🌍 DIM_REGION"]
+    J["📅 DIM_DATE"]
+    K["📊 FACT_SALES"]
+end
+
+%% ===================== ANALYTICS =====================
+subgraph BI[📊 Analytics & Reporting]
+    L["📈 Power BI Dashboard"]
+end
+
+%% ===================== FLOW =====================
+A --> B --> C --> D --> F --> E
+E --> G
+E --> H
+E --> I
+E --> J
+G --> K
+H --> K
+I --> K
+J --> K
+K --> L
+
+%% ===================== STYLING =====================
+style A fill:#FFD54F,stroke:#F57F17,color:#000
+style B fill:#4FC3F7,stroke:#0277BD,color:#fff
+style C fill:#4FC3F7,stroke:#01579B,color:#fff
+style D fill:#BA68C8,stroke:#4A148C,color:#fff
+style E fill:#AED581,stroke:#33691E,color:#000
+style F fill:#FF8A65,stroke:#BF360C,color:#fff
+style K fill:#90CAF9,stroke:#0D47A1,color:#000
+style L fill:#F44336,stroke:#B71C1C,color:#fff
 
 ## 🛠️ Tech Stack
 
