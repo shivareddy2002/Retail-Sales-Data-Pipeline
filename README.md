@@ -53,15 +53,14 @@ They need:
 
 ## 🛠️ Tech Stack
 
-| Tool | Purpose |
-|------|--------|
-| **Snowflake** | Cloud Data Warehouse |
-| **SQL** | Data transformation & querying |
-| **Snowflake Streams** | Change Data Capture |
-| **Snowflake Tasks** | Automation & scheduling |
-| **Power BI Desktop** | Data visualization |
-| **CSV** | Source data |
-| **Git / GitHub** | Version control |
+| Component       | Technology        | Purpose                          |
+| --------------- | ----------------- | -------------------------------- |
+| Data Warehouse  | Snowflake         | Storage, compute, processing     |
+| Transformation  | SQL               | Data cleaning and transformation |
+| Orchestration   | Snowflake Tasks   | Pipeline automation              |
+| CDC             | Snowflake Streams | Change tracking                  |
+| Visualization   | Power BI          | Dashboards                       |
+| Version Control | GitHub            | Code management                  |
 
 ---
 
@@ -118,16 +117,15 @@ retail-data-pipeline/
 
 ## ✨ Key Features
 
-| Feature | Description |
-|---------|-------------|
-| 🔄 **Incremental Loading** | Only processes new/changed records — no full table reloads |
-| 📡 **CDC with Streams** | Captures INSERT, UPDATE, DELETE changes automatically |
-| ⚙️ **Task Automation** | Pipeline runs every 5 minutes without manual intervention |
-| ⭐ **Star Schema** | Kimball-style dimensional model for fast BI queries |
-| 🧪 **Data Quality** | 5 automated checks with pass/fail logging to audit table |
-| ⏱️ **Time Travel** | Query historical data snapshots for auditing and recovery |
-| 📊 **Power BI Ready** | Pre-built DAX measures and dashboard design guide |
-| 🏷️ **Metadata Tracking** | Every record tagged with load timestamp, source, and version |
+| Feature                    | Description                                 |
+| -------------------------- | ------------------------------------------- |
+| 🔄 **Incremental Loading** | Uses MERGE to process only new/changed data |
+| 📡 **CDC with Streams**    | Tracks INSERT, UPDATE, DELETE automatically |
+| ⚙️ **Task Automation**     | Scheduled pipelines using Snowflake Tasks   |
+| ⭐ **Star Schema**          | Optimized dimensional model for analytics   |
+| 🧪 **Data Quality**        | Automated validation checks with logging    |
+| ⏱️ **Time Travel**         | Access historical data for recovery         |
+| 📊 **Power BI Ready**      | DirectQuery + pre-built DAX measures        |
 
 ---
 
