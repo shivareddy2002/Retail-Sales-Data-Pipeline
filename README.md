@@ -97,6 +97,8 @@ style F fill:#FF8A65,stroke:#BF360C,color:#fff
 style K fill:#90CAF9,stroke:#0D47A1,color:#000
 style L fill:#F44336,stroke:#B71C1C,color:#fff
 
+```
+
 ## 🛠️ Tech Stack
 
 | Component       | Technology        | Purpose                          |
