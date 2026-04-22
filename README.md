@@ -153,7 +153,7 @@ retail-data-pipeline/
 │   └── POWERBI_INTEGRATION.md                   # Step-by-step Power BI guide
 │
 ├── 📁 images/
-│   └──screenshot 1
+│   └──screenshot_1.png
 │
 ├── 📁 docs/
 │   └── Project Documentation
@@ -174,6 +174,15 @@ retail-data-pipeline/
 | ⏱️ **Time Travel**         | Access historical data for recovery         |
 | 📊 **Power BI Ready**      | DirectQuery + pre-built DAX measures        |
 
+---
+## 🎯 Key Highlights
+
+- Built an end-to-end data pipeline using Snowflake  
+- Implemented CDC with Streams and incremental loading  
+- Designed a scalable Star Schema for analytics  
+- Automated workflows using Snowflake Tasks  
+- Integrated Power BI for business reporting
+- 
 ---
 
 ## 📊 Dataset
@@ -220,17 +229,19 @@ WHEN MATCHED AND s.metadata$action = 'INSERT' THEN UPDATE
 WHEN MATCHED AND s.metadata$action = 'DELETE' THEN DELETE
 WHEN NOT MATCHED AND s.metadata$action = 'INSERT' THEN INSERT
 ```
+### ⭐ 3. Star Schema (Dimensional Modeling)
 
-### 3. Star Schema
-- **FACT_SALES** — one row per order transaction with measures (sales, profit)
-- **DIM_CUSTOMER** — customer attributes + segmentation
-- **DIM_PRODUCT** — product name + category
-- **DIM_REGION** — region lookup table
-- **DIM_DATE** — calendar table with year/month/quarter attributes
-### 💡 Why Star Schema?
-- Faster query performance
-- Simplified joins
+- **FACT_SALES** — one row per order transaction with measures (sales, profit)  
+- **DIM_CUSTOMER** — customer attributes + segmentation  
+- **DIM_PRODUCT** — product name + category  
+- **DIM_REGION** — region lookup table  
+- **DIM_DATE** — calendar table with year/month/quarter attributes  
+
+#### 💡 Why Star Schema?
+- Faster query performance  
+- Simplified joins  
 - Optimized for BI tools like Power BI
+  
 ---
 
 **Skills demonstrated:** Snowflake · SQL · ETL · CDC · Star Schema · Dimensional Modeling · Power BI · Pipeline Automation
