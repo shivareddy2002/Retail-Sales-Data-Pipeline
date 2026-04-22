@@ -284,7 +284,7 @@ git clone https://github.com/shivareddy2002/retail-data-pipeline.git
 
 - 📧 **Email**: lomadasivagangireddy3@gmail.com  
 - 📞 **Phone**: 9346493592  
-- 💼 [LinkedIn](https://www.linkedin.com/in/lomada-siva-gangi-reddy-a64197280/)  🌐 [GitHub](https://github.com/shivareddy2002)  🚀 [Portfolio](https://lsgr-portfolio-pulse.lovable.app/)
+- 💼 [LinkedIn](https://www.linkedin.com/in/lomada-siva-gangi-reddy-a64197280/)  🌐 [GitHub](https://github.com/shivareddy2002)  🚀 [Portfolio](https://lsgr-portfolio-pulse.vercel.app/)
 
 ---
 <p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8e2de2,100:4a00e0&height=120&section=footer"/> </p>
