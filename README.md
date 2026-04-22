@@ -227,7 +227,7 @@ MERGE INTO staging USING stream_data
 --- 
 
 ## 🖼️ Visual Workflow
-
+```mermaid
 flowchart LR
 
 %% ===================== DATA INGESTION =====================
