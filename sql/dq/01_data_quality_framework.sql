@@ -1,0 +1,33 @@
+USE DATABASE RETAIL_DATA_PLATFORM;
+
+CREATE OR REPLACE TABLE MONITORING.DQ_QUARANTINE (
+  dq_id NUMBER AUTOINCREMENT,
+  rule_name STRING,
+  order_id STRING,
+  reason STRING,
+  payload VARIANT,
+  logged_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
+);
+
+CREATE OR REPLACE TABLE MONITORING.DQ_ERROR_LOG (
+  error_id NUMBER AUTOINCREMENT,
+  process_name STRING,
+  error_message STRING,
+  query_id STRING,
+  logged_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
+);
+
+-- Null checks
+INSERT INTO MONITORING.DQ_QUARANTINE(rule_name, order_id, reason, payload)
+SELECT 'NOT_NULL_ORDER_ID', order_id, 'order_id is null', OBJECT_CONSTRUCT(*)
+FROM SILVER.SALES_CLEAN
+WHERE order_id IS NULL;
+
+-- Duplicate checks
+INSERT INTO MONITORING.DQ_QUARANTINE(rule_name, order_id, reason, payload)
+SELECT 'DUPLICATE_ORDER', order_id, 'duplicate order_id in silver', OBJECT_CONSTRUCT(*)
+FROM (
+  SELECT *, ROW_NUMBER() OVER(PARTITION BY order_id ORDER BY event_ts DESC) rn
+  FROM SILVER.SALES_CLEAN
+) x
+WHERE rn > 1;

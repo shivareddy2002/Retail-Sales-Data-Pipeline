@@ -1,0 +1,29 @@
+USE DATABASE RETAIL_DATA_PLATFORM;
+USE SCHEMA SILVER;
+
+-- Root task (every 5 minutes)
+CREATE OR REPLACE TASK TASK_BRONZE_TO_SILVER
+  WAREHOUSE = RETAIL_WH_ETL
+  SCHEDULE = '5 MINUTE'
+  USER_TASK_TIMEOUT_MS = 300000
+AS
+  CALL SYSTEM$LOG_INFO('Running bronze->silver merge');
+
+CREATE OR REPLACE TASK TASK_SILVER_TO_GOLD
+  WAREHOUSE = RETAIL_WH_ETL
+  AFTER TASK_BRONZE_TO_SILVER
+AS
+  CALL SYSTEM$LOG_INFO('Running silver->gold model load');
+
+CREATE OR REPLACE TASK TASK_DQ_CHECKS
+  WAREHOUSE = RETAIL_WH_ETL
+  AFTER TASK_SILVER_TO_GOLD
+AS
+  CALL SYSTEM$LOG_INFO('Running DQ checks');
+
+-- Resume root to activate DAG
+ALTER TASK TASK_BRONZE_TO_SILVER RESUME;
+
+-- Retry and error handling pattern:
+-- * Set TASK_AUTO_RETRY_ATTEMPTS at account level or use rerun procedures.
+-- * Capture failures via INFORMATION_SCHEMA.TASK_HISTORY into monitoring tables.
