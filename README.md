@@ -288,3 +288,8 @@ git clone https://github.com/shivareddy2002/retail-data-pipeline.git
 
 ---
 <p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8e2de2,100:4a00e0&height=120&section=footer"/> </p>
+
+
+## 📘 Full Detailed Guide
+For a section-by-section implementation matching portfolio requirements, see:
+- `docs/FULL_PROJECT_GUIDE.md`
