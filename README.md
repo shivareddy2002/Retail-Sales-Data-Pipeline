@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-### End-to-End Data Engineering Project: Incremental Loading, CDC, Star Schema & Power BI
+### End-to-End Data Engineering Project: Incremental Loading, CDC, Star Schema & Power BI /
 
   <img src="https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white" alt="Snowflake" />
   <img src="https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="SQL" />
